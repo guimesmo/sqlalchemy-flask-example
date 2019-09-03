@@ -1,6 +1,9 @@
 from flask import Flask, escape, request, render_template
+from Demo.db import init_db
+from models import Autor
 
 app = Flask(__name__)
+db_session = init_db()
 
 @app.route('/')
 def index():
@@ -29,16 +32,17 @@ def autores():
     """
     Aqui deve ser implementada a listagem de autores
     """
-    autores = []
-    render_template('autores.html', autores=autores)
+    autores = db_session.query(Autor).all()
+    
+    return render_template('autores.html', autores=autores)
     
 
-@app.route('/autores/<slug>')
-def autor(slug):
+@app.route('/autores/<pk>')
+def autor(pk):
     """
     Aqui devem ser implementados os detalhes do autor
     """
-    autores = []
-    render_template('autor.html', autores=autores)
+    autores = db_session.query(Autor).filter(Autor.id_autor == pk)[0]
+    return render_template('autor.html', autor=autores)
     
     

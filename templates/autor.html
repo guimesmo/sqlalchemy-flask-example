@@ -1,8 +1,29 @@
-<html>
-  <head>
-    <title></title>
-    <meta content="">
-    <style></style>
-  </head>
-  <body></body>
-</html>
+{% extends "base.html" %}
+<div>
+{% block main %}
+    
+    <div class="row">
+        <div class="col-2">
+            
+                <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">{{ autor.id_autor }}</a>
+        </div>
+        <div class="col-2">
+            
+                <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">{{ autor.nome }}</a>
+        </div>
+        <div class="col-2">
+            
+                <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">{{ autor.descricao|default(" ", true) }}</a>
+        </div>
+        <div class="col-2">
+            
+                <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">{{ autor.foto_url|default(" ", true) }}</a>
+        </div>
+        <div class="col-2">
+            
+                <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">{{ autor.time|default(" ", true) }}</a>
+        </div>
+    </div>
+  
+{% endblock %}
+<div>
